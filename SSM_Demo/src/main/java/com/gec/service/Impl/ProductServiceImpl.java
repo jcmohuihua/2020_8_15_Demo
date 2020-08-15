@@ -22,4 +22,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAllProduct() {
         return pm.selectByExample(null);
     }
+
+    @Override
+    public Product findProductById(int pid) {
+        return pm.selectByPrimaryKey(pid);
+    }
 }

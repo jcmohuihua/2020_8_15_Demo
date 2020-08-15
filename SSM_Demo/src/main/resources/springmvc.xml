@@ -25,11 +25,11 @@
 
     <!--    配置 日期转换器-->
     <bean name="myConverter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <!--<property name="converters">
+        <property name="converters">
             <set>
-                <bean class="com.gec.utils.myConverter"/>
+                <bean class="com.gec.utils.MyConverter"/>
             </set>
-        </property> -->
+        </property>
     </bean>
 
     <!--    配置 文件上传-->
@@ -41,7 +41,6 @@
             mapping；映射配置 项目中资源路径
             location：资源访问路径
     -->
-    <!--    <mvc:resources mapping="/images/**" location="/images/"/>-->
     <mvc:resources mapping="/static/**" location="/static/"/>
 
     <!--    配置异常处理机制-->

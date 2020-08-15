@@ -48,7 +48,7 @@
 
                 <td>
 <%--                                                                RestFull风格--%>
-                    <a href="${pageContext.request.contextPath }/itemEdit.action/${item.id}/${item.name}">修改</a>
+                    <a href="${pageContext.request.contextPath }/itemEdit.action/${item.id}">修改</a>
                 </td>
 
             </tr>
