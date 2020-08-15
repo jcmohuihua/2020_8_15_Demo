@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--    开启注解扫描-->
+    <context:component-scan base-package="com.gec.controller"/>
+
+    <!--    将日期转换器 挂在 mvc 注解驱动上-->
+    <mvc:annotation-driven conversion-service="myConverter"/>
+
+    <!--    配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!--    配置 日期转换器-->
+    <bean name="myConverter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <!--<property name="converters">
+            <set>
+                <bean class="com.gec.utils.myConverter"/>
+            </set>
+        </property> -->
+    </bean>
+
+    <!--    配置 文件上传-->
+    <!--<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1048576"/>
+    </bean>-->
+
+    <!--    配置放行 哪些资源不被拦截
+            mapping；映射配置 项目中资源路径
+            location：资源访问路径
+    -->
+    <!--    <mvc:resources mapping="/images/**" location="/images/"/>-->
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!--    配置异常处理机制-->
+    <!--    <bean class="com.shop.utils.MyHandlerExceptionResolver"/>-->
+
+    <!--    配置 springmvc 拦截器-->
+    <!--    <mvc:interceptors>
+            <mvc:interceptor>
+                <mvc:mapping path="/**"/>
+                <bean class="com.gec.utils.MyHandlerInterceptor"/>
+            </mvc:interceptor>
+        </mvc:interceptors>-->
+</beans>
